@@ -46,10 +46,10 @@ gke-my-gke-cluster-1-terraform-202412-115c90e0-txvw   Ready    <none>   87m    v
 Logs for autoscaling:-
 
 resource.type="k8s_cluster"
-resource.labels.project_id="cts01-shreyashree"
+resource.labels.project_id="Replace by ProjectID"
 resource.labels.location="us-central1-a"
 resource.labels.cluster_name="my-gke-cluster-111"
-logName="projects/cts01-shreyashree/logs/container.googleapis.com%2Fcluster-autoscaler-visibility"
+logName="projects/ProjectID/logs/container.googleapis.com%2Fcluster-autoscaler-visibility"
 severity>=DEFAULT
 ("scaleUp" NOT "notScaleUp")
 
@@ -77,12 +77,12 @@ severity>=DEFAULT
     "type": "k8s_cluster",
     "labels": {
       "cluster_name": "my-gke-cluster-111",
-      "project_id": "cts01-shreyashree",
+      "project_id": "ProjectID",
       "location": "us-central1-a"
     }
   },
   "timestamp": "2024-12-12T08:12:01.490374152Z",
-  "logName": "projects/cts01-shreyashree/logs/container.googleapis.com%2Fcluster-autoscaler-visibility",
+  "logName": "projects/ProjectID/logs/container.googleapis.com%2Fcluster-autoscaler-visibility",
   "receiveTimestamp": "2024-12-12T08:12:02.611425118Z"
 }
 
