@@ -11,13 +11,6 @@ A simple Nginx deployment was created with a Kubernetes service exposing the app
 This deployment was designed to scale horizontally by increasing the number of pod replicas, which would trigger the pod autoscaler based on CPU utilization.
 Autoscaling Setup:
 
-Horizontal Pod Autoscaler (HPA) was configured to scale the number of pods between 2 and 10 based on CPU utilization.
-Cluster Autoscaler was enabled to automatically scale the number of nodes in the cluster based on resource demands. The autoscaler ensures the cluster adds nodes when the workload exceeds the available capacity and removes nodes when the load decreases.
-Blue-Green Deployment:
-
-I implemented a blue-green deployment strategy by creating two versions of the Nginx application (nginx-blue and nginx-green), with each version running on separate deployments.
-The switch between the blue and green versions was controlled via a Kubernetes service, which pointed to either the nginx-blue or nginx-green deployment, based on the desired version.
-I used Kubernetes kubectl commands to manage the deployment and demonstrate the seamless switch between the two versions.
 Traffic Generation and Autoscaling Verification:
 
 Load testing was done using the hey tool to simulate heavy traffic to the application. This triggered both the horizontal pod autoscaler and the cluster autoscaler.
@@ -34,12 +27,3 @@ Traffic Simulation and Load Generation:
 Simulating sustained heavy traffic using hey required careful tuning to generate enough load to trigger the autoscalers without overwhelming the environment. It took some trial and error to determine the optimal load values.
 Blue-Green Deployment Traffic Switching:
 
-Managing the blue-green deployment was simple, but I had to ensure that there was a seamless switch between the two application versions without downtime. Using a Kubernetes service with version-based selectors helped maintain smooth traffic flow.
-Logs and Screenshots Demonstrating Autoscaling and Blue-Green Deployment
-While I can't directly share screenshots here, I can provide the relevant logs and commands that demonstrate the successful execution of autoscaling and blue-green deployment.
-
-Autoscaling Logs (Pods)
-After applying load using hey, the logs for the Horizontal Pod Autoscaler (HPA) show that the number of replicas increased to handle the load. You can check the status of the HPA with:
-
-bash
-Copy code
