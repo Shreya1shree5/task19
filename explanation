@@ -25,5 +25,64 @@ While enabling the Cluster Autoscaler, it was crucial to ensure that the node po
 Traffic Simulation and Load Generation:
 
 Simulating sustained heavy traffic using hey required careful tuning to generate enough load to trigger the autoscalers without overwhelming the environment. It took some trial and error to determine the optimal load values.
-Blue-Green Deployment Traffic Switching:
+
+
+Before traffic simulation 
+shreyashree@cloudshell:~$ kubectl get nodes
+NAME                                                  STATUS   ROLES    AGE     VERSION
+gke-my-gke-cluster-1-terraform-202412-115c90e0-2ffx   Ready    <none>   7h39m   v1.30.5-gke.1699000
+gke-my-gke-cluster-1-terraform-202412-115c90e0-htn0   Ready    <none>   7h39m   v1.30.5-gke.1699000
+
+After traffic simulation
+kubectl get nodes
+NAME                                                  STATUS   ROLES    AGE    VERSION
+gke-my-gke-cluster-1-terraform-202412-115c90e0-2ffx   Ready    <none>   7h2m   v1.30.5-gke.1699000
+gke-my-gke-cluster-1-terraform-202412-115c90e0-92vp   Ready    <none>   87m    v1.30.5-gke.1699000
+gke-my-gke-cluster-1-terraform-202412-115c90e0-ds6b   Ready    <none>   87m    v1.30.5-gke.1699000
+gke-my-gke-cluster-1-terraform-202412-115c90e0-htn0   Ready    <none>   7h2m   v1.30.5-gke.1699000
+gke-my-gke-cluster-1-terraform-202412-115c90e0-txvw   Ready    <none>   87m    v1.30.5-gke.1699000
+                                                                                
+
+Logs for autoscaling:-
+
+resource.type="k8s_cluster"
+resource.labels.project_id="cts01-shreyashree"
+resource.labels.location="us-central1-a"
+resource.labels.cluster_name="my-gke-cluster-111"
+logName="projects/cts01-shreyashree/logs/container.googleapis.com%2Fcluster-autoscaler-visibility"
+severity>=DEFAULT
+("scaleUp" NOT "notScaleUp")
+
+{
+  "insertId": "2ef0bfe8-3e9e-4e95-b9f7-b251ef544001@a1",
+  "jsonPayload": {
+    "decision": {
+      "scaleUp": {
+        "increasedMigs": [
+          {
+            "mig": {
+              "nodepool": "terraform-20241212023717858900000001",
+              "zone": "us-central1-a",
+              "name": "gke-my-gke-cluster-1-terraform-202412-115c90e0-grp"
+            },
+            "requestedNodes": 3
+          }
+        ]
+      },
+      "decideTime": "1733991121",
+      "eventId": "c94e2d30-aaa8-4981-84c0-6b5eb6e17d7e"
+    }
+  },
+  "resource": {
+    "type": "k8s_cluster",
+    "labels": {
+      "cluster_name": "my-gke-cluster-111",
+      "project_id": "cts01-shreyashree",
+      "location": "us-central1-a"
+    }
+  },
+  "timestamp": "2024-12-12T08:12:01.490374152Z",
+  "logName": "projects/cts01-shreyashree/logs/container.googleapis.com%2Fcluster-autoscaler-visibility",
+  "receiveTimestamp": "2024-12-12T08:12:02.611425118Z"
+}
 
