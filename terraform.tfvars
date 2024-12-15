@@ -1,4 +1,4 @@
-project_id = "Your_projectID"
+project_id = "cts05-murgod"
 zone       = "us-central1-a"
 cluster_name = "my-gke-cluster-111"
 machine_type = "e2-medium"
