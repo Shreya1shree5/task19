@@ -12,7 +12,7 @@ variable "zone" {
 variable "cluster_name" {
   description = "The name of the GKE cluster."
   type        = string
-  default     = "my-gke-cluster111"
+  default     = "my-gke-cluster111-terraform"
 }
 
 variable "machine_type" {
