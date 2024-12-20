@@ -3,7 +3,7 @@ variable "project_id" {
   type        = string
 }
 
-variable "zone" {
+variable "region" {
   description = "The region to deploy the GKE cluster in."
   type        = string
   default     = "asia-east2"
