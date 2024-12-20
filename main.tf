@@ -1,6 +1,6 @@
 resource "google_container_cluster" "primary" {
   name     = var.cluster_name
-  region =   var.region
+  location =   var.region
 
   remove_default_node_pool = true
   deletion_protection = false
