@@ -1,6 +1,6 @@
 project_id = "solid-altar-444910-c9"
 region       = "asia-east2"
-cluster_name = "my-gke-cluster-111"
+cluster_name = "my-gke-cluster-111-terraform"
 machine_type = "e2-standard-2"
 network      = "default"
 subnetwork   = "default"
