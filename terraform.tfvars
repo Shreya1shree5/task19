@@ -1,5 +1,5 @@
 project_id = "solid-altar-444910-c9"
-zone       = "us-central1"
+region       = "us-central1"
 cluster_name = "my-gke-cluster-111"
 machine_type = "e2-standard-2"
 network      = "default"
