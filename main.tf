@@ -13,13 +13,12 @@ resource "google_container_cluster" "primary" {
 resource "google_container_node_pool" "primary_nodes" {
   cluster  = google_container_cluster.primary.name
   location = google_container_cluster.primary.location
-
+  node_locations = "asia-east2-a,asia-east2-b,asia-east2-c"
   node_count = 1
 
   node_config {
     machine_type = var.machine_type
     disk_size_gb = 10
-    node_locations = "asia-east2-a,asia-east2-b,asia-east2-c"
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",
     ]
